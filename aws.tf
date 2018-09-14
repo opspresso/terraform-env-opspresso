@@ -7,7 +7,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     region = "ap-northeast-2"
-    bucket = "terraform-state-bespin-sbl-seoul"
+    bucket = "terraform-state-sbl"
     key = "www.tfstate"
   }
 }
