@@ -8,6 +8,6 @@ terraform {
   backend "s3" {
     region = "ap-northeast-2"
     bucket = "terraform-state-sbl"
-    key = "www.tfstate"
+    key = "opspresso-web.tfstate"
   }
 }

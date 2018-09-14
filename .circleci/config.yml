@@ -8,14 +8,20 @@ jobs:
       - image: hashicorp/terraform:light
     steps:
       - checkout
-      - run: terraform init
-      - run: terraform apply -auto-approve
+      - run:
+          name: Terraform Apply
+          command: |
+            terraform init
+            terraform apply -auto-approve
   deploy:
     docker:
       - image: opspresso/awscli
     steps:
       - checkout
-      - run: aws s3 sync src/ s3://www.opspresso.com/ --acl public-read
+      - run:
+          name: AWS S3 Sync
+          command: |
+            aws s3 sync src/ s3://www.opspresso.com/ --acl public-read
 
 workflows:
   version: 2

@@ -17,3 +17,15 @@ module "www" {
     "${var.domain}"
   ]
 }
+
+module "repo" {
+  source = "git::https://github.com/nalbam/terraform-aws-static-web.git"
+  region = "${var.region}"
+
+  zone_id = "${module.domain.zone_id}"
+  certificate_arn = "${module.domain.certificate_arn}"
+
+  domain_name = [
+    "repo.${var.domain}"
+  ]
+}
