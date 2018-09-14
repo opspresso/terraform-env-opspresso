@@ -21,7 +21,7 @@ jobs:
       - run:
           name: AWS S3 Sync
           command: |
-            aws s3 sync src/ s3://www.opspresso.com/ --acl public-read
+            aws s3 sync src/www/ s3://www.opspresso.com/ --acl public-read
 
 workflows:
   version: 2
