@@ -10,4 +10,5 @@ terraform {
     bucket = "terraform-state-sbl"
     key = "opspresso-web.tfstate"
   }
+  required_version = "> 0.11.0"
 }
