@@ -6,7 +6,7 @@ terraform {
     bucket = "terraform-nalbam-seoul"
     key = "opspresso.tfstate"
   }
-  required_version = "> 0.11.0"
+  required_version = "0.11.14"
 }
 
 provider "aws" {
