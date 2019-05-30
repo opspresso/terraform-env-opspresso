@@ -1,45 +1,32 @@
 # Terraform Main
 
-terraform {
-  backend "s3" {
-    region = "ap-northeast-2"
-    bucket = "terraform-nalbam-seoul"
-    key = "opspresso.tfstate"
-  }
-  required_version = "0.11.14"
-}
-
-provider "aws" {
-  region = "${var.region}"
-}
-
 module "domain" {
   source = "git::https://github.com/nalbam/terraform-aws-route53.git"
-  domain = "${var.domain}"
+  domain = var.domain
 }
 
 module "www" {
   source = "git::https://github.com/nalbam/terraform-aws-static-web.git"
-  region = "${var.region}"
+  region = var.region
 
-  zone_id = "${module.domain.zone_id}"
-  certificate_arn = "${module.domain.certificate_arn}"
+  zone_id         = module.domain.zone_id
+  certificate_arn = module.domain.certificate_arn
 
   domain_name = [
     "www.${var.domain}",
-    "${var.domain}"
+    var.domain,
   ]
 }
 
 module "repo" {
   source = "git::https://github.com/nalbam/terraform-aws-static-web.git"
-  region = "${var.region}"
+  region = var.region
 
-  zone_id = "${module.domain.zone_id}"
-  certificate_arn = "${module.domain.certificate_arn}"
+  zone_id         = module.domain.zone_id
+  certificate_arn = module.domain.certificate_arn
 
   domain_name = [
-    "repo.${var.domain}"
+    "repo.${var.domain}",
   ]
 }
 

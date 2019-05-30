@@ -5,7 +5,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: opspresso/terraform:0.11.14
+      - image: hashicorp/terraform:light
     steps:
       - checkout
       - run:
@@ -21,7 +21,7 @@ jobs:
       - run:
           name: AWS S3 Sync
           command: |
-            aws s3 sync src/www/ s3://www.opspresso.com/ --acl public-read
+            aws s3 sync src/www/  s3://www.opspresso.com/  --acl public-read
             aws s3 sync src/repo/ s3://repo.opspresso.com/ --acl public-read
 
 workflows:

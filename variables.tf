@@ -1,7 +1,7 @@
-variable region {
+variable "region" {
   default = "ap-northeast-2"
 }
 
-variable domain {
+variable "domain" {
   default = "opspresso.com"
 }
