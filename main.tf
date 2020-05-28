@@ -1,16 +1,21 @@
-# Terraform Main
+# main
 
 module "domain" {
-  source = "git::https://github.com/nalbam/terraform-aws-route53.git"
-  domain = var.domain
+  source = "github.com/nalbam/terraform-aws-route53?ref=v0.12.28"
+
+  root_domain = var.domain
+
+  acm_certificate = true
 }
 
 module "www" {
-  source = "git::https://github.com/nalbam/terraform-aws-static-web.git"
+  source = "github.com/nalbam/terraform-aws-static-web?ref=v0.12.22"
   region = var.region
 
   zone_id         = module.domain.zone_id
   certificate_arn = module.domain.certificate_arn
+
+  force_destroy = true
 
   domain_name = [
     "www.${var.domain}",
@@ -19,21 +24,15 @@ module "www" {
 }
 
 module "repo" {
-  source = "git::https://github.com/nalbam/terraform-aws-static-web.git"
+  source = "github.com/nalbam/terraform-aws-static-web?ref=v0.12.22"
   region = var.region
 
   zone_id         = module.domain.zone_id
   certificate_arn = module.domain.certificate_arn
 
+  force_destroy = true
+
   domain_name = [
     "repo.${var.domain}",
   ]
-}
-
-output "www" {
-  value = "https://www.${var.domain}"
-}
-
-output "repo" {
-  value = "https://repo.${var.domain}"
 }
