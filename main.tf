@@ -1,7 +1,7 @@
 # main
 
 module "domain" {
-  source = "github.com/nalbam/terraform-aws-route53?ref=v0.12.28"
+  source = "github.com/nalbam/terraform-aws-route53?ref=v0.12.31"
 
   root_domain = var.domain
 
