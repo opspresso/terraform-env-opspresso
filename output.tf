@@ -1,5 +1,5 @@
 # output
 
 output "www" {
-  value = "https://www.${var.domain}"
+  value = format("https://www.%s", var.domain)
 }

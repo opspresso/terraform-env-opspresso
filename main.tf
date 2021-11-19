@@ -5,7 +5,7 @@ module "domain" {
 
   root_domain = var.domain
 
-  acm_certificate = true
+  # acm_certificate = true
 }
 
 module "www" {
@@ -18,7 +18,7 @@ module "www" {
   force_destroy = true
 
   domain_name = [
-    "www.${var.domain}",
+    format("www.%s", var.domain),
     var.domain,
   ]
 }
@@ -33,6 +33,6 @@ module "repo" {
   force_destroy = true
 
   domain_name = [
-    "repo.${var.domain}",
+    format("repo.%s", var.domain),
   ]
 }
