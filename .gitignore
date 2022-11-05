@@ -17,6 +17,7 @@ $RECYCLE.BIN/
 # Terraform
 .terraform/
 .terraform.tfstate.lock.info
+.terraform.lock.hcl
 terraform.tfstate.backup
 terraform.tfstate
 terraform.tfplan
@@ -28,3 +29,6 @@ build/
 # JetBrains
 .idea/
 *.iml
+
+# Temp
+.output/

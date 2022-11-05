@@ -1,7 +1,7 @@
 # backend
 
 terraform {
-  # required_version = "1.2.8"
+  required_version = "1.2.8"
 
   # backend "s3" {
   #   region = "ap-northeast-2"
@@ -28,5 +28,5 @@ provider "aws" {
   region  = var.region
 }
 
-resource "null_resource" "null" {
-}
+# resource "null_resource" "null" {
+# }
