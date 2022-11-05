@@ -1,15 +1,14 @@
 # backend
 
-# terraform {
-#   backend "s3" {
-#     region = "ap-northeast-2"
-#     bucket = "terraform-nalbam-seoul"
-#     key    = "opspresso.tfstate"
-#   }
-#   required_version = ">= 0.12"
-# }
-
 terraform {
+  # required_version = "1.2.8"
+
+  # backend "s3" {
+  #   region = "ap-northeast-2"
+  #   bucket = "terraform-workshop-seoul"
+  #   key    = "opspresso/web.tfstate"
+  # }
+
   backend "remote" {
     organization = "opspresso"
     workspaces {
@@ -20,13 +19,14 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "3.65.0"
+      version = "4.35.0"
     }
   }
 }
 
 provider "aws" {
-  region = var.region
+  region  = var.region
 }
 
-# aws s3 cp s3://terraform-nalbam-seoul/opspresso.tfstate ./terraform.tfstate
+resource "null_resource" "null" {
+}
