@@ -5,7 +5,7 @@ module "domain" {
 
   root_domain = var.domain
 
-  acm_certificate = true
+  # acm_certificate = true
 }
 
 # module "www" {
