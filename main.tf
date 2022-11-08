@@ -1,12 +1,12 @@
 # main
 
-module "domain" {
-  source = "github.com/nalbam/terraform-aws-route53?ref=v0.12.31"
+# module "domain" {
+#   source = "github.com/nalbam/terraform-aws-route53?ref=v0.12.31"
 
-  root_domain = var.domain
+#   root_domain = var.domain
 
-  # acm_certificate = true
-}
+#   # acm_certificate = true
+# }
 
 # module "www" {
 #   source = "github.com/nalbam/terraform-aws-static-web?ref=v0.12.22"
