@@ -8,31 +8,31 @@ module "domain" {
   acm_certificate = true
 }
 
-module "www" {
-  source = "github.com/nalbam/terraform-aws-static-web?ref=v0.12.22"
-  region = var.region
+# module "www" {
+#   source = "github.com/nalbam/terraform-aws-static-web?ref=v0.12.22"
+#   region = var.region
 
-  zone_id         = module.domain.zone_id
-  certificate_arn = module.domain.certificate_arn
+#   zone_id         = module.domain.zone_id
+#   certificate_arn = module.domain.certificate_arn
 
-  force_destroy = true
+#   force_destroy = true
 
-  domain_name = [
-    format("www.%s", var.domain),
-    var.domain,
-  ]
-}
+#   domain_name = [
+#     format("www.%s", var.domain),
+#     var.domain,
+#   ]
+# }
 
-module "repo" {
-  source = "github.com/nalbam/terraform-aws-static-web?ref=v0.12.22"
-  region = var.region
+# module "repo" {
+#   source = "github.com/nalbam/terraform-aws-static-web?ref=v0.12.22"
+#   region = var.region
 
-  zone_id         = module.domain.zone_id
-  certificate_arn = module.domain.certificate_arn
+#   zone_id         = module.domain.zone_id
+#   certificate_arn = module.domain.certificate_arn
 
-  force_destroy = true
+#   force_destroy = true
 
-  domain_name = [
-    format("repo.%s", var.domain),
-  ]
-}
+#   domain_name = [
+#     format("repo.%s", var.domain),
+#   ]
+# }

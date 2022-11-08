@@ -25,7 +25,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.region
+  region = var.region
 }
 
 # resource "null_resource" "null" {
