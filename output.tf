@@ -1,5 +1,5 @@
-# output
+# # output
 
-output "www" {
-  value = format("https://www.%s", var.domain)
-}
+# output "www" {
+#   value = format("https://www.%s", var.domain)
+# }
