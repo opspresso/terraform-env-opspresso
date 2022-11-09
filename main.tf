@@ -23,17 +23,17 @@ module "www" {
   ]
 }
 
-# module "ghs" {
-#   source = "github.com/nalbam/terraform-aws-route53-record?ref=v0.13.2"
+module "ghs" {
+  source = "github.com/nalbam/terraform-aws-route53-record?ref=v0.13.2"
 
-#   zone_id = module.domain.zone_id
-#   name = [
-#     format("calendar.%s", var.domain),
-#     format("mail.%s", var.domain),
-#   ]
-#   type = "CNAME"
+  zone_id = module.domain.zone_id
+  name = [
+    format("calendar.%s", var.domain),
+    format("mail.%s", var.domain),
+  ]
+  type = "CNAME"
 
-#   records = [
-#     "ghs.googlehosted.com",
-#   ]
-# }
+  records = [
+    "ghs.googlehosted.com",
+  ]
+}
