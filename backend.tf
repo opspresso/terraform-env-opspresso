@@ -1,12 +1,14 @@
 # backend
 
 terraform {
-  required_version = "1.2.8"
+  required_version = "1.7.5" # terraform version
 
   # backend "s3" {
-  #   region = "ap-northeast-2"
-  #   bucket = "terraform-workshop-seoul"
-  #   key    = "opspresso/web.tfstate"
+  #   region         = "ap-northeast-2"
+  #   bucket         = "terraform-workshop-396608815058"
+  #   key            = "frontend/web/terraform.tfstate"
+  #   dynamodb_table = "terraform-resource-lock"
+  #   encrypt        = true
   # }
 
   backend "remote" {
@@ -19,14 +21,13 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.35.0"
+      version = "5.81.0" # terraform aws provider version
     }
   }
 }
 
+# provider
+
 provider "aws" {
   region = var.region
 }
-
-# resource "null_resource" "null" {
-# }
